@@ -1,0 +1,27 @@
+{
+    "hasMore": false,
+    "limit": 100,
+    "count": 1,
+    "offset": 0,
+    "items": [
+        {
+            "rateUnitBreakProfileXid": "MJB_USA_LTL_SANDIEGO_LOSANGELES_RR_230901",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/rateUnitBreakProfiles/CPK.MJB_USA_LTL_SANDIEGO_LOSANGELES_RR_230901"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/rateUnitBreakProfiles/CPK.MJB_USA_LTL_SANDIEGO_LOSANGELES_RR_230901"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/rateUnitBreakProfiles"
+        }
+    ]
+}

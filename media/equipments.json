@@ -1,0 +1,90 @@
+{
+   "hasMore": false,
+   "limit": 25,
+   "count": 2,
+   "offset": 0,
+   "items":    [
+            {
+         "equipmentGroupXid": "40FT",
+         "effectiveWeight":          {
+            "value": 66138.678,
+            "unit": "LB"
+         },
+         "effectiveVolume":          {
+            "value": 2241.775042116,
+            "unit": "CUFT"
+         },
+         "width":          {
+            "value": 7.8,
+            "unit": "FT"
+         },
+         "length":          {
+            "value": 39.37,
+            "unit": "FT"
+         },
+         "height":          {
+            "value": 7.8,
+            "unit": "FT"
+         },
+         "isContainer": false,
+         "allowLifoOnly": false,
+         "domainName": "CPK",
+         "hasMeter": false,
+         "isBulk": false,
+         "insertDate": {"value": "2023-03-06T12:46:21Z"},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/equipmentGroups/CPK.40FT"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/equipmentGroups/CPK.40FT"
+            }
+         ]
+      },
+            {
+         "equipmentGroupXid": "20FT",
+         "effectiveWeight":          {
+            "value": 61729.4328,
+            "unit": "LB"
+         },
+         "effectiveVolume":          {
+            "value": 1102.170747707,
+            "unit": "CUFT"
+         },
+         "width":          {
+            "value": 7.8,
+            "unit": "FT"
+         },
+         "length":          {
+            "value": 19.4,
+            "unit": "FT"
+         },
+         "height":          {
+            "value": 7.8,
+            "unit": "FT"
+         },
+         "isContainer": false,
+         "allowLifoOnly": false,
+         "domainName": "CPK",
+         "hasMeter": false,
+         "isBulk": false,
+         "insertDate": {"value": "2023-03-06T12:46:21Z"},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/equipmentGroups/CPK.20FT"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/equipmentGroups/CPK.20FT"
+            }
+         ]
+      }
+   ],
+   "links": [   {
+      "rel": "self",
+      "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/equipmentGroups"
+   }]
+}

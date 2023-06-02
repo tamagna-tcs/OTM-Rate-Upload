@@ -1,0 +1,991 @@
+{
+   "hasMore": true,
+   "limit": 25,
+   "count": 25,
+   "offset": 0,
+   "items":    [
+            {
+         "servprovXid": "207628",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.LUAC",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:51Z"},
+         "insertDate": {"value": "2023-03-28T11:11:12Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.207628/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.207628"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.207628"
+            }
+         ]
+      },
+            {
+         "servprovXid": "100387",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.FXFE",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:51Z"},
+         "insertDate": {"value": "2023-03-28T11:56:40Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.100387/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.100387"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.100387"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193055",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.HOMS",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:03:04Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193055/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193055"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193055"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193056",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.HURK",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:05:16Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193056/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193056"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193056"
+            }
+         ]
+      },
+            {
+         "servprovXid": "194037",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.TFEN",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:07:26Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.194037/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.194037"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.194037"
+            }
+         ]
+      },
+            {
+         "servprovXid": "200960",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:13:54Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.200960/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.200960"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.200960"
+            }
+         ]
+      },
+            {
+         "servprovXid": "204263",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.ARVY",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:16:42Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.204263/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.204263"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.204263"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193071",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.MJBF",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:35:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193071/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193071"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193071"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193079",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.RBTW",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:35:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193079/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193079"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193079"
+            }
+         ]
+      },
+            {
+         "servprovXid": "197285",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.UWCT",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:52Z"},
+         "insertDate": {"value": "2023-03-28T12:35:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.197285/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.197285"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.197285"
+            }
+         ]
+      },
+            {
+         "servprovXid": "197709",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.FDEN",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-03-28T12:41:05Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.197709/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.197709"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.197709"
+            }
+         ]
+      },
+            {
+         "servprovXid": "MJB FREIGHT SYSTEMS INC-USA",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.MJBF",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-02-28T16:31:53Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.MJB%20FREIGHT%20SYSTEMS%20INC-USA/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.MJB%20FREIGHT%20SYSTEMS%20INC-USA"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.MJB%20FREIGHT%20SYSTEMS%20INC-USA"
+            }
+         ]
+      },
+            {
+         "servprovXid": "DUMMY",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-04-05T08:41:41Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.DUMMY/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.DUMMY"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.DUMMY"
+            }
+         ]
+      },
+            {
+         "servprovXid": "202833",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.ECHS",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-03-28T11:55:32Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.202833/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.202833"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.202833"
+            }
+         ]
+      },
+            {
+         "servprovXid": "204475",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.MGXB",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-03-28T11:57:02Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.204475/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.204475"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.204475"
+            }
+         ]
+      },
+            {
+         "servprovXid": "208315",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.EVTW",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-03-28T11:59:15Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.208315/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.208315"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.208315"
+            }
+         ]
+      },
+            {
+         "servprovXid": "196016",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.SCNN",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-03-28T12:09:47Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.196016/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.196016"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.196016"
+            }
+         ]
+      },
+            {
+         "servprovXid": "101782",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.CLQE",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:53Z"},
+         "insertDate": {"value": "2023-03-28T12:10:23Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.101782/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.101782"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.101782"
+            }
+         ]
+      },
+            {
+         "servprovXid": "198358",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.PAZC",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:54Z"},
+         "insertDate": {"value": "2023-03-28T12:11:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.198358/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.198358"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.198358"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193050",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.FXFE",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:54Z"},
+         "insertDate": {"value": "2023-03-28T12:11:57Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193050/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193050"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193050"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193054",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.HLCU",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:54Z"},
+         "insertDate": {"value": "2023-03-28T12:35:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193054/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193054"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193054"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193057",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.JETD",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:54Z"},
+         "insertDate": {"value": "2023-03-28T12:35:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193057/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193057"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193057"
+            }
+         ]
+      },
+            {
+         "servprovXid": "193095",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.DSVA",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:54Z"},
+         "insertDate": {"value": "2023-03-28T12:35:18Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193095/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193095"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.193095"
+            }
+         ]
+      },
+            {
+         "servprovXid": "201526",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.FDEN",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:54Z"},
+         "insertDate": {"value": "2023-03-28T12:41:05Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.201526/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.201526"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.201526"
+            }
+         ]
+      },
+            {
+         "servprovXid": "FEDEX ECONOMY - SIMPLIFIED LOGISTICS-USA",
+         "matchRuleProfileGid": "CPK.MRP-STANDARD",
+         "autoPaymentFlag": false,
+         "autoApproveRuleProfileGid": "CPK.IARP-STANDARD",
+         "allocationRuleProfileGid": "CPK.ARP-STANDARD",
+         "isDispatchByRegion": false,
+         "allowTender": true,
+         "isAcceptSpotBids": false,
+         "isAcceptBroadcastTenders": false,
+         "isLocalizeBroadcastContact": false,
+         "doConditionalAccepts": false,
+         "isInternalNvocc": false,
+         "isAcceptBySsuAllowed": false,
+         "isCopyInvDeltaBackToShip": false,
+         "invoicingProcess": "S",
+         "scacGid": "CPK.FXNL",
+         "isMinority": false,
+         "incumbent": false,
+         "isFleet": false,
+         "domainName": "CPK",
+         "allowSpotRating": true,
+         "updateDate": {"value": "2023-04-06T10:48:55Z"},
+         "insertDate": {"value": "2023-02-28T16:35:54Z"},
+         "aliases": {"links": [         {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.FEDEX%20ECONOMY%20-%20SIMPLIFIED%20LOGISTICS-USA/aliases"
+         }]},
+         "links":          [
+                        {
+               "rel": "self",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.FEDEX%20ECONOMY%20-%20SIMPLIFIED%20LOGISTICS-USA"
+            },
+                        {
+               "rel": "canonical",
+               "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders/CPK.FEDEX%20ECONOMY%20-%20SIMPLIFIED%20LOGISTICS-USA"
+            }
+         ]
+      }
+   ],
+   "links":    [
+            {
+         "rel": "next",
+         "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders?offset=25"
+      },
+            {
+         "rel": "self",
+         "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/serviceProviders"
+      }
+   ]
+}

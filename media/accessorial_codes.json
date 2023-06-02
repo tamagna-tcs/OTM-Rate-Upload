@@ -1,0 +1,66 @@
+{
+    "hasMore": false,
+    "limit": 100,
+    "count": 4,
+    "offset": 0,
+    "items": [
+        {
+            "accessorialCodeXid": "FSC_PERCENT",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.FSC_PERCENT"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.FSC_PERCENT"
+                }
+            ]
+        },
+        {
+            "accessorialCodeXid": "CAF",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.CAF"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.CAF"
+                }
+            ]
+        },
+        {
+            "accessorialCodeXid": "BAF",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.BAF"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.BAF"
+                }
+            ]
+        },
+        {
+            "accessorialCodeXid": "MISCELLENIOS",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.MISCELLENIOS"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes/CPK.MISCELLENIOS"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/accessorialCodes"
+        }
+    ]
+}

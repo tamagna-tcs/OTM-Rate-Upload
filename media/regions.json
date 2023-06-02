@@ -1,0 +1,43 @@
+{
+    "hasMore": false,
+    "limit": 100,
+    "count": 1,
+    "offset": 0,
+    "items": [
+        {
+            "regionXid": "WORLD_TO_WORLD",
+            "loaded": "Y",
+            "domainName": "CPK",
+            "updateDate": {
+                "value": "2023-04-05T14:18:13Z"
+            },
+            "insertDate": {
+                "value": "2023-03-16T15:29:36Z"
+            },
+            "details": {
+                "links": [
+                    {
+                        "rel": "self",
+                        "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/regions/CPK.WORLD_TO_WORLD/details"
+                    }
+                ]
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/regions/CPK.WORLD_TO_WORLD"
+                },
+                {
+                    "rel": "canonical",
+                    "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/regions/CPK.WORLD_TO_WORLD"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "rel": "self",
+            "href": "https://otmgtm-ekix-dev2.otm.us6.oraclecloud.com:443/logisticsRestApi/resources-int/v2/regions"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+   "hasMore": false,
+   "limit": 25,
+   "count": 2,
+   "offset": 0,
+   "items":    [
+      {
+         "accessorialCostGid": "ABC",
+         "accessorialCostXid": "ABC",
+         "isActive": true
+      },
+      {
+         "accessorialCostGid": "MNO",
+         "accessorialCostXid": "MNO",
+         "isActive": true
+      },
+			{
+         "accessorialCostGid": "XYZ",
+         "accessorialCostXid": "XYZ",
+         "isActive": true
+      }
+   ]
+}

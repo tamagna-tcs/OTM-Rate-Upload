@@ -1,0 +1,20 @@
+<S:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <env:Header/>
+   <S:Body>
+      <svc:xmlExportResponse xmlns:svc="http://xmlns.oracle.com/apps/otm/CommandService">
+         <dbxml:xml2sql Version="23A" xmlns:dbxml="http://xmlns.oracle.com/apps/otm/DBXML">
+            <dbxml:TRANSACTION_SET>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="0 - 399"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="400 - 465"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="466 - 2165"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="2166 - 5000"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="5001 - 6730"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="6731 - 10000"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="10001 - 14000"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="14001 - 20000"/>
+               <RATE_UNIT_BREAK WEIGHT_BREAK="20001 - 29000"/>
+            </dbxml:TRANSACTION_SET>
+         </dbxml:xml2sql>
+      </svc:xmlExportResponse>
+   </S:Body>
+</S:Envelope>
