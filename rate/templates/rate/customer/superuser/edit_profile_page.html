@@ -1,0 +1,46 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Edit User Profile{% endblock %}
+
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+<form method="POST">
+    {% csrf_token %}
+    {% if error == True %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+    {% endif %}
+    <br/>
+    <label><b>Email: {{profile.user.username}}</b></label>
+    <br/><br/>
+    <div class="form-group">
+        <label>Group</label>
+        <input type="text" name="group_name" class="form-control" maxlength="30" value="{{profile.group_name}}">
+    </div>
+    <div class="form-group">
+        <label>Region</label>
+        <input type="text" name="region" class="form-control" maxlength="30" value="{{profile.region}}">    
+    </div>
+    <!-- <label>Sub-Group</label>
+    <input type="text" name="sub_group" class="form-control" maxlength="30" value="{{profile.sub_group}}">
+    <label>Tag</label>
+    <input type="text" name="tag" class="form-control" maxlength="30" value="{{profile.tag}}"> -->
+    <br/>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<br/>
+
+<p><a href="{% url 'manager-dashboard' request.session.customer_key%}">Return to Dashboard</a></p>
+</div>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

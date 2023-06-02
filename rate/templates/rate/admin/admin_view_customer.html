@@ -1,0 +1,170 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Admin - View Customers{% endblock %}
+  
+{% block content %}
+    <div class="mx-auto col-lg-10 col-lg-6">
+        <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">Customers</div>
+        <table class="table table-striped table-bordered">
+            <tr><th>Customer Name</th><th>Domain</th><th>End Date</th><th>Login URL</th><th nowrap="nowrap">Actions</th></tr>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.customer_name }}</td>
+                <td>{{ customer.domain }}</td>
+                <td nowrap="nowrap">{% if customer.end_date %} {{customer.end_date|date:"d-M-Y"}} {% else %} &nbsp; {% endif %}</td>
+                <td nowrap="nowrap">
+                    <input type="text" value="{{ full_url }}{{customer.customer_key}}/login/" style="border:none; width:100%; background-color: transparent;" readonly id="customer_url_{{ forloop.counter0 }}">
+                </td>
+                <td nowrap="nowrap">
+                    <a href="#" name="copy_url_btn_{{ forloop.counter0 }}" onclick="copyUrlToClipboard(this)">Copy URL</a>&nbsp;
+                    <a href="{% url 'master-edit-customer' customer.customer_key %}">Edit</a>&nbsp;
+                    <a href="{% url 'master-manage-customer' customer.customer_key %}">Manage</a>
+                </td>
+            </tr>   
+            {% endfor %}
+        </table>
+        <a type="button" class="btn btn-primary" href="{% url 'master-add-customer' %}">Add Customer</a>
+        <br><br>
+        <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">Reset Configurations for Customer</div>
+        <form method="post" onsubmit="return resetConfig();">
+            {% csrf_token %}
+            <input type="hidden" name="system_url" value="{{ full_url }}">
+            <label>Select Customer:</label>
+            <br>
+            <select name="customer" id="customer" class="form-select" required>
+                <option hidden disabled selected value> ---- </option>
+                {% for customer in customers %}
+                    <option value="{{customer.customer_key}}">{{ customer.customer_name }}</option>
+                {% endfor %}
+            </select>
+            <BR/>
+            <table valign="top"><tr>
+                <td style="width: 20%;"><input type="submit" value="Reset All Configurations" name="reset_data" class="btn btn-primary"></td>
+                <td style="width: 5%;padding-left:10px;">
+                    <div id="reset_circular_loader" style="visibility: hidden;">
+                        <div class="loader">
+                    </div>
+                </div></td>
+                <td style="width: 75%;">
+                    <span class="alert alert-warning" role="alert" id="reset_progress_message" hidden="true">Refreshing configurations, please wait!</span>
+                    {% if reset_outcome == "ERROR" %}
+                        <span class="alert alert-danger" role="alert" id="reset_outcome_message">{{reset_message}}</span>
+                    {% elif reset_outcome == "SUCCESS" %}
+                        <span class="alert alert-success" role="alert" id="reset_outcome_message">{{reset_message}}</span>
+                    {% endif %}
+                </td>
+            </tr></table>
+        </form>
+        <br/><br/>
+        <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">Clone Template for Customer</div>
+        <form method="post" onsubmit="return clone();">
+            {% csrf_token %}
+            <input type="hidden" name="system_url" value="{{ full_url }}">
+            <label>Select Template for Clone:</label>
+            <br>
+            <select name="template_id" id="template_id" class="form-select" required>
+                <option hidden disabled selected value> ---- </option>
+                {% for template in templates %}
+                    <option value="{{ template.id }}">{{template.customer.customer_name}} - {{template.offering_type_name}} - {{template.rate_type_name}} - {{template.group_name}}</option>
+                {% endfor %}
+            </select>
+            <label>Group Name</label>
+            <input type="text" name="group" class="form-control" maxlength="30" required>
+            <BR/>
+            <table><tr valign="top">
+                <td style="width: 20%;"><input type="submit" value="Clone Template" name="clone_data" class="btn btn-primary"></td>
+                <td style="width: 5%;padding-left:10px;">
+                    <div id="clone_circular_loader" style="visibility: hidden;">
+                        <div class="loader">
+                    </div>
+                </div></td>
+                <td style="width: 75%;">
+                    <span class="alert alert-warning" role="alert" id="clone_progress_message" hidden="true">Refreshing configurations, please wait!</span>
+                    {% if clone_outcome == "ERROR" %}
+                        <span class="alert alert-danger" role="alert" id="clone_outcome_message" style="display:inline-block;">{{clone_message}}</span>
+                    {% elif clone_outcome == "SUCCESS" %}
+                        <span class="alert alert-success" role="alert" id="clone_outcome_message" style="display:inline-block">{{clone_message}}</span>
+                    {% endif %}
+                </td>
+            </tr></table>
+        </form>
+    </div>
+
+    <script>
+        setTimeout(function(){
+            if (document.getElementById("reset_outcome_message")) {
+                let fadeTarget = document.getElementById("reset_outcome_message");
+                var fadeEffect = setInterval(function () {
+                    if (!fadeTarget.style.opacity) {
+                        fadeTarget.style.opacity = 1;
+                    }
+                    if (fadeTarget.style.opacity > 0) {
+                        fadeTarget.style.opacity -= 0.4;
+                    } else {
+                        clearInterval(fadeEffect);
+                    }
+                }, 200);
+            }
+            
+            if (document.getElementById("clone_outcome_message")) {
+                fadeTarget = document.getElementById("clone_outcome_message");
+                var fadeEffect = setInterval(function () {
+                    if (!fadeTarget.style.opacity) {
+                        fadeTarget.style.opacity = 1;
+                    }
+                    if (fadeTarget.style.opacity > 0) {
+                        fadeTarget.style.opacity -= 0.4;
+                    } else {
+                        clearInterval(fadeEffect);
+                    }
+                }, 200);
+            }
+
+            if (document.getElementById("reset_outcome_message")) {
+                document.getElementById("reset_outcome_message").innerText = "";
+                document.getElementById("reset_outcome_message").hidden = true;
+            }
+
+            if (document.getElementById("clone_outcome_message")) {
+                document.getElementById("clone_outcome_message").innerText = "";
+                document.getElementById("clone_outcome_message").hidden = true;
+            }
+        }, 5000);
+
+        function resetConfig() {
+            result = confirm('This will revert all customer specific configurations. Are you sure to proceed?');
+
+            if (result) {
+                document.getElementById("reset_progress_message").innerText = "Resetting configurations, please wait...";
+                document.getElementById("reset_progress_message").hidden = false;
+                document.getElementById("reset_circular_loader").style.visibility = 'visible';
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function clone() {
+            document.getElementById("clone_progress_message").innerText = "Cloning template, please wait...";
+            document.getElementById("clone_progress_message").hidden = false;
+            document.getElementById("clone_circular_loader").style.visibility = 'visible';
+            return true;
+        }
+
+        function copyUrlToClipboard(button) {
+            let index = button.name.replace("copy_url_btn_", "")
+            let url = document.getElementById("customer_url_" + index)
+            url.select()
+            document.execCommand("copy");
+            document.getSelection().removeAllRanges();
+            button.focus();
+        }
+    </script>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand">OTM Rate Upload</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

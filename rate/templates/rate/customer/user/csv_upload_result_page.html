@@ -1,0 +1,108 @@
+{% extends "rate/common/base.html" %}
+{% block title %}Rate File Uploaded{% endblock %}
+
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+    {% if outcome == "SUCCESS" %}
+        {% if completed == "N" %}
+        <div class="alert alert-warning" role="alert">{{message}} Transmission Number is <b>{{ transaction_id }}</b>. Please click on "View Upload Status" button to see the results.</div>
+        {% endif %}
+        <form method="post" id="results_form">
+            {% csrf_token %}
+            <br>
+            <input type="hidden" name="upload_outcome" value="{{ outcome }}">
+            <input type="hidden" name="upload_message" value="{{ message }}">
+            <input type="hidden" name="transmission_no" value="{{ transaction_id }}">
+            {% if completed == "N" %}
+            <button type="submit" name="GetStatus" class="btn btn-primary" id="submit_button" style="width: 35%;" disabled>View Upload Status <span id="count"></span></button>
+            <br><br>
+            {% endif %}
+            {% if processing_status == "PROCESSING" %}
+                <div class="alert alert-primary" role="alert">
+                    {% for processing_message in processing_messages %}
+                        Data is being processed, please wait.
+                    {% endfor %}
+                </div>
+            {% elif processing_status %}
+                <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+                    Rate Upload Report
+                </div>
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr bgcolor="#D3D3D3">
+                            <th class="text-start">Table Name</th><th class="text-end">Processed</th><th class="text-end">Errored</th><th class="text-end">Skipped</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for processing_message in processing_messages %}
+                            <tr bgcolor="#F8F8F8">
+                                <td class="text-start">{{ processing_message.table_name }}</td><td class="text-end">{{ processing_message.processed }}</td><td class="text-end">{{ processing_message.errored }}</td><td class="text-end">{{ processing_message.skipped }}</td>
+                            </tr>
+                            {% if processing_message.exceptions|length > 0 %}
+                            <tr>
+                                <td colspan="4" class="text-start" style="padding-left: 1em;">
+                                    {% for exception in processing_message.exceptions %}
+                                    <span style="color:red">{{ exception }}</span></br>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table> 
+                {% if processing_status == "SUCCESS" %}
+                    <div class="alert alert-success" role="alert">
+                        Rates have been uploaded successfully.
+                    </div>
+                {% elif processing_status == "ERROR" %}
+                    <div class="alert alert-danger" role="alert">
+                        Rate upload has failed. Please review the report.
+                    </div> 
+                {% endif %}
+            {% endif %}
+        </form>
+    {% else %}
+        <div class="alert alert-danger" role="alert" id="csv_generate_message">{{message}}</div>
+    {% endif %}
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+</div>
+
+<script>
+    // Get refreence to span and button
+    var spn = document.getElementById("count");
+    var btn = document.getElementById("submit_button");
+
+    var count = 5;     // Set count
+    var timer = null;  // For referencing the timer
+
+    (function countDown(){
+        // Display counter and start counting down
+        if (count == 0) {
+            spn.textContent = "";
+        }
+        else {
+            spn.textContent = " (" + count + ")";
+        }        
+        
+        // Run the function again every second if the count is not zero
+        if(count !== 0){
+            timer = setTimeout(countDown, 1000);
+            count--; // decrease the timer
+        } else {
+            // Enable the button
+            btn.removeAttribute("disabled");
+        }
+    }());
+</script>
+
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

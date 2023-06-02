@@ -1,0 +1,277 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Download Template{% endblock %}
+
+{% block content %}
+
+{% load parameter_value_filter %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script>
+    let ajax_url_for_contracts = '{% url "get_contracts_ajax" %}';
+    let csrftoken = '{{ csrf_token }}';
+    let rate_type_name = '{{ request.session.rate_type_name }}'
+</script>
+
+<div class="mx-auto ms-2 me-2">
+    <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">Prepare Template for Download <i>({{ request.session.offering_type_name }} - {{ request.session.rate_type_name }})</i></div>
+    <form method="post" id="template_form">
+        {% csrf_token %}
+        <input type="hidden" id="table_record_count" name="table_record_count" value="0">
+        <div style="width: 99%; overflow-x: scroll; overflow-y:hidden">
+            <table id="TemplateTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        {% for column in template_static_columns %}
+                            {% if column.template_column_name == "Weight Break Profile" %}
+                                <th position = "{{ column.position }}" nowrap="nowrap">{{ column.template_column_name }} <i style="font-size:20px;color:blue" class="fa" data-toggle="tooltip" data-placement="top" title="Value from the 1st row will be reused in all subsequent rows.">&#xf05a;</i></th>
+                            {% else %}
+                                <th position = "{{ column.position }}" nowrap="nowrap">{{ column.template_column_name }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        {% for column in template_parameters %}
+                            <th position = "{{ column.position }}" nowrap="nowrap">{{ column.parameter_name }} <i style="font-size:20px;color:blue" class="fa" data-toggle="tooltip" data-placement="top" title="Value from the 1st row will be reused in all subsequent rows.">&#xf05a;</i></th>
+                        {% endfor %}
+                        {% if acs_charges|length %}
+                        <th position = "{{ starting_position_of_accessorials }}" nowrap>Accessorial Charges <i style="font-size:20px;color:blue" class="fa" data-toggle="tooltip" data-placement="top" title="Value from the 1st row will be reused in all subsequent rows.">&#xf05a;</i></th>
+                        {% endif %}
+                        <th nowrap="nowrap">Record Count in Excel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for column in template_static_columns %}
+                            {% if column.template_column_name == "Service Provider Name" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select" onchange="populateContractNumbers(this)">
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for service_provider in service_providers %}
+                                        <option>{{ service_provider }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Currency" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for currency in currencies %}
+                                        <option>{{ currency.currency_code }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Equipment" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for equipment in equipments %}
+                                        <option>{{ equipment }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Existing Contract" %}
+                                <td class="align-middle">
+                                    <input type="Checkbox" class="form-check-input" id="{{ column.html_element_name }}_0" value="Y" onclick="enableContractField(this);">
+                                    <label class="form-check-label" for="flexCheckDefault">Yes</label>
+                                    <input type="hidden" name="{{ column.html_element_name }}_0" value="N">
+                                </td>
+                            {% elif column.template_column_name == "Contract Name" %}
+                                <td class="align-middle" width="200px">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select" {% if request.session.rate_type_name|upper != "DISCOUNT" %}disabled{% endif %}>
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for contract in contracts %}
+                                        <option>{{ contract }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Weight UOM" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for weight_uom in weight_uoms %}
+                                        <option>{{ weight_uom.uom_code }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Volume UOM" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for volume_uom in volume_uoms %}
+                                        <option>{{ volume_uom.uom_code }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Weight Break Profile" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        <option hidden disabled selected value> ---- </option>
+                                        {% for weight_break_profile in weight_break_profiles %}
+                                        <option>{{ weight_break_profile }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.template_column_name == "Start Date" %}
+                                <td class="align-middle"><input type="date" id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-control"></td>
+                            {% elif column.template_column_name == "End Date" %}
+                                <td class="align-middle"><input type="date" id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-control"></td>
+                            {% else %}
+                                <td class="align-middle"><input type="text" name="{{ column.html_element_name }}_0" class="form-control" ></td>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for column in template_parameters %}
+                            {% if column.parameter_name == "Source Geography" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        {# Loop for each template parameter has open. Now we need to open loop for template parameter values, #}
+                                        {# but we have to esnure that template parameter value loop is opened only for the current template parameter.#}
+                                        {# For this purpose, a template argument has been created, refer to templateargs/parameter_value_filter.py #}
+                                        {# Inside that get_child_values function is there which will return only those parameter values that belong to the parameter that we are passing. #}
+                                        {# The same function has been called in the next line #}
+                                        <option hidden disabled selected value> Select Geography </option>
+                                        {% for template_parameter_value in template_parameter_values|get_child_values:column %}
+                                            <option value="{{ template_parameter_value.id }}">{{ template_parameter_value.parameter_value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div style="text-align:center"><span style="color:blue;"><b>Or</b> (Don't select both)</span></div>
+                                    <select id="source_region_0" name="source_region_0" class="form-select">
+                                        <option hidden disabled selected value> Select Region </option>
+                                        {% for region in regions %}
+                                            <option value="{{ region }}">{{ region }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% elif column.parameter_name == "Destination Geography" %}
+                                <td class="align-middle">
+                                    <select id="{{ column.html_element_name }}_0" name="{{ column.html_element_name }}_0" class="form-select">
+                                        {# Loop for each template parameter has open. Now we need to open loop for template parameter values, #}
+                                        {# but we have to esnure that template parameter value loop is opened only for the current template parameter.#}
+                                        {# For this purpose, a template argument has been created, refer to templateargs/parameter_value_filter.py #}
+                                        {# Inside that get_child_values function is there which will return only those parameter values that belong to the parameter that we are passing. #}
+                                        {# The same function has been called in the next line #}
+                                        <option hidden disabled selected value> Select Geography </option>
+                                        {% for template_parameter_value in template_parameter_values|get_child_values:column %}
+                                            <option value="{{ template_parameter_value.id }}">{{ template_parameter_value.parameter_value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div style="text-align:center"><span style="color:blue;"><b>Or</b> (Don't select both)</span></div>
+                                    <select id="destination_region_0" name="destination_region_0" class="form-select">
+                                        <option hidden disabled selected value> Select Region </option>
+                                        {% for region in regions %}
+                                            <option value="{{ region }}">{{ region }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% else %}
+                                <td class="align-middle"><input type="text" name="{{ column.html_element_name }}_0" class="form-control" ></td>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if acs_charges|length %}
+                        <td class="align-middle">
+                            {% for column in acs_charges %}
+                            <div class="form-check form-switch"><input type="Checkbox" class="form-check-input" name="charges_0" value="{{ column }}">{{ column }}</div>
+                            {% endfor %}
+                        </td>
+                        {% endif %}
+                        
+                        <td class="align-middle"><input type="number" id="excel_row_count_0" name="excel_row_count_0" required class="form-control" placeholder="Required"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </symbol>
+          </svg>
+        <div class="alert alert-danger d-flex align-items-center" role="alert" style="width: fit-content;opacity: 0" id="validation_message_parent">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div id="validation_message">
+              An example warning alert with an icon
+            </div>
+          </div>
+        <table> 
+            <tr>
+                <td><input type="button" value="Reset" class="btn btn-secondary" onClick = "resetForm()"></td>
+                <td></td>
+                <td><input type="button" value="Clear Geographies" class="btn btn-secondary" onClick = "clearGeographies()"></td>
+                <td></td>
+                <td><input type="button" value="Add Row" onclick="addRows()" class="btn btn-secondary" {% if not show_add_remove_buttons %} hidden {% endif %} /></td>
+                <td></td>
+                <td><input type="button" value="Delete Row" onclick="deleteRows()" class="btn btn-secondary" {% if not show_add_remove_buttons %} hidden {% endif %} /></td> 
+                <td></td>                
+                <!-- <td><input type="submit" value="Download Excel Template" class="btn btn-primary" onclick="populateTableRecordsCount();" /></td>  -->
+                <td><button id="submit_button" type="button" class="btn btn-primary" onclick="validate()" class="btn btn-primary">Download Excel Template</button></td>
+                <td><button id="modal_button" type="button" data-toggle="modal" data-target="#popupModal" onclick="initiateSubmit()" hidden>Dummy</button></td>
+            </tr> 
+        </table>
+        <br>
+        <table> 
+            <tr>
+                <td colspan="2">
+                    <input type="Checkbox" class="form-check-input" id="save_template_cb" name="save_template_cb" value="YES" onclick="enableTemplateNameField(this);">
+                    <label class="form-check-label" for="flexCheckDefault">Save this template for future user</label></td>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="" class="form-control" id="template_name" name="template_name" placeholder="Enter template name" disabled/></td>
+                <td><label class="form-check-label" for="flexCheckDefault">&nbsp;<i></i></label></td></td>
+            </tr>  
+        </table>
+        <div id="show_message"></div>
+    </form>
+    <br>
+    <p class="text-danger">Don't change any column heading after downloading the Excel template.</p>
+    <p class="text-danger">
+        Date fields in the Excel template must be kept in ISO 8601 format (yyyy-mm-dd or yyyy/mm/dd or yyyy.mm.dd or yyyymmdd or YYYY-MMM-DD).
+        <br/>
+        Example: 2010/08/15, 2010-08-15, 2010.08.15, 20100815, 2010-Aug-15 etc.
+    </p>
+    {% if request.session.allow_admin_rate_upload == "Y" %}
+        <p><a href="{% url 'select-instance' request.session.customer_key%}">Go Back</a></p>
+    {% else %}
+        <p><a href="{% url 'home' %}">Return to home</a></p>
+    {% endif %}
+</div>
+
+<!--Popup Modal-->
+<div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="loader"></div>
+          <h5 class="modal-title" id="exampleModalCenterTitle">Please wait</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id="popupModalBody" class="alert alert-primary" role="alert"></div>
+        <div class="modal-footer">
+            <button id="close-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        renderPage('{{ template_batch_fields|safe }}');
+    });
+</script>
+
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

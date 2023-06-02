@@ -1,0 +1,42 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Grant Access{% endblock %}
+
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Select Instance</label>
+        <select name="instance_id" class="form-select" required>
+            {% for instance in instances %}
+            <option value="{{ instance.id }}">{{ instance.instance_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Select User</label>
+        <select name="user_id" class="form-select" required>
+            {% for profile in profiles %}
+            <option value="{{ profile.user.id }}">{{ profile.user.username }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<br/>
+
+<p><a href="{% url 'manager-dashboard' request.session.customer_key%}">Return to Dashboard</a></p>
+</div>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

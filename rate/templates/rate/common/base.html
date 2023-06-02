@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}OTM Rate Upload{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+     <!-- BootsCustom javascript -->
+    <script src="{% static 'rate/custom.js' %}"></script>
+
+    <style>
+      .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 2s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    
+    {% block scripts %}
+    {% endblock %}
+
+  </head>
+  <body>
+    {% block navbar %}
+    <nav class="navbar bg-dark sticky-top" data-bs-theme="dark">
+      <div class="container-fluid">
+        {% block header %}
+          <a class="navbar-brand">
+            {% block customer %}OTM Rate Upload{% endblock %}
+          </a>
+          {% endblock %}
+      </div>
+    </nav>
+    <br/>
+    {% endblock %}
+    <div id="content">
+      <div class="row">
+          {% block content %}{% endblock %}
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    {% block script %}
+    <script>
+      (function() {
+      
+          const idleDurationSecs = 3600;    // X number of seconds
+          const redirectUrl = "{% url 'logout' %}";  // Redirect idle users to this URL
+          let idleTimeout; // variable to hold the timeout, do not modify
+      
+          const resetIdleTimeout = function() {
+      
+              // Clears the existing timeout
+              if(idleTimeout) clearTimeout(idleTimeout);
+      
+              // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+              idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+          };
+      
+          // Init on page load
+          resetIdleTimeout();
+      
+          // Reset the idle timeout on any of the events listed below
+          ['click', 'touchstart', 'mousemove'].forEach(evt => 
+              document.addEventListener(evt, resetIdleTimeout, false)
+          );
+      
+      })();
+    </script>
+    {% endblock %}
+  </body>
+</html>

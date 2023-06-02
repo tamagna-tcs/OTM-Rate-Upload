@@ -1,0 +1,37 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Error Page{% endblock %}
+   
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+    <form action="" method="POST">
+        {% csrf_token %}    
+        <br/><br/>
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+        {% if duplicate_row_nums %}
+            {% for d in duplicate_row_nums %}
+            <label>Row {{ d }}, </label>
+            {% endfor %}
+            <br/><br/>
+        {% endif %}
+        <br/>
+        <a href="{{ url }}">{{ url }}</a>
+    </form>
+    {% if not show_home_link == "N" %}
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+    {% endif %}
+</div>
+<br/><br/>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

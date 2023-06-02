@@ -1,0 +1,105 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Add New Instance{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script>
+    function process() {
+    
+        // var passkey = document.getElementById("passKey").value;
+
+        // if (!(document.getElementById("instanceName").value)) {
+        //   document.getElementById("error").innerHTML = "Enter Instance Name";
+        //   return false;
+        // }
+        // else if (!(document.getElementById("instanceType").value)) {
+        //   document.getElementById("error").innerHTML = "Enter Instance Type";
+        //   return false;
+        // }
+        // else if (!(document.getElementById("instanceURL").value)) {
+        //   document.getElementById("error").innerHTML = "Enter Instance URL";
+        //   return false;
+        // }
+        // else if (!(document.getElementById("instanceUser").value)) {
+        //   document.getElementById("error").innerHTML = "Enter Instance User Name";
+        //   return false;
+        // }
+        // else if (!(document.getElementById("instancePassword").value)) {
+        //   document.getElementById("error").innerHTML = "Enter Instance Password";
+        //   return false;
+        // }
+        // else if (!passkey || passkey.trim() === "")  {
+        //     document.getElementById("passKeyEnabled").value = "N";
+        //     document.InstanceForm.submit();
+        // }
+        // else {
+        //     var password = document.getElementById("instancePassword").value;
+        //     var encrypted = CryptoJS.AES.encrypt(password, passkey);
+        //     document.getElementById("instancePassword").value = encrypted;
+    
+        //     var decrypted = CryptoJS.AES.decrypt(encrypted, passkey);  
+        //     document.getElementById("passKeyEnabled").value = "Y";
+        //     document.InstanceForm.submit();
+        // }
+
+        document.InstanceForm.submit();
+        
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+<form method="POST" name="InstanceForm">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Instance Name *</label>
+        <input type="text" name="instance_name" id="instance_name" class="form-control" required maxlength="30" required>
+    </div>
+    <div class="form-group">
+        <label>Instance Type *</label>
+        <select name="instance_type" id="instance_type" class="form-select" required>
+            <option value="DEV">DEV</option>
+            <option value="SIT">SIT</option>
+            <option value="UAT">UAT</option>
+            <option value="PATCH">PATCH</option>
+            <option value="PROD">PROD</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Instance URL *</label>
+        <input type="text" name="instance_url" id="instance_url" class="form-control" required maxlength="240">
+    </div>
+    <div class="form-group">
+        <label>Instance User Name *</label>
+        <input type="text" name="instance_user" id="instance_user" class="form-control" required maxlength="30">
+    </div>
+    <div class="form-group">
+        <label>Instance Password *</label>
+        <input type="password" name="instance_password" id="instance_password" class="form-control" required maxlength="20">
+    </div>
+    <!-- <br/> -->
+    <!-- <input type="hidden" name="pass_key_enabled" id="pass_key_enabled"> -->
+    <!-- <label>Enter Key</label><label>&nbsp;<I>(This is not required. If you provide any key then the same will be needed during rate upload)</I></label>
+    <input type="password" id="passKey" class="form-control" maxlength="30"> -->
+    <br/>
+    <!-- <button type="button" class="btn btn-primary" onclick="process()">Save</button> -->
+    <button type="submit" class="btn btn-primary">Save</button>
+    <span id="error"></span>
+</form>
+<br/>
+
+<p><a href="{% url 'manager-dashboard' request.session.customer_key%}">Return to Dashboard</a></p>
+</div>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

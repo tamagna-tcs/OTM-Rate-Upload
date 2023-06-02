@@ -1,0 +1,171 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Select Instance{% endblock %}
+  
+{% block content %}
+
+<script>
+    let ajax_url_for_rate_type = '{% url "get_rate_types_ajax" %}';
+    let csrftoken = '{{ csrf_token }}';
+    let templateId = '{{request.session.template_id}}';
+</script>
+
+<div class="mx-auto col-lg-4">
+    <form method="POST" id="main_form">
+        {% csrf_token %}
+        <br/><br/>
+        <label><b>Select OTM Instance*:</b></label>
+        <br>
+        {% for instance in instances %}
+            <!-- If instance is found in session, then select that instance by default -->
+            {% if instance.id == request.session.instance_id %} 
+            <input class="btn-check" type="radio" name="instance_id" id="instance_{{ instance.id }}" value="{{ instance.id }}" required checked>
+            {% else %}
+            <input class="btn-check" type="radio" name="instance_id" id="instance_{{ instance.id }}" value="{{ instance.id }}" required>
+            {% endif %}
+            {% if instance.status == "UP" %} <label class="btn btn-outline-success" for="instance_{{ instance.id }}">{{ instance.instance_name }}</label> {% endif %}
+            {% if instance.status == "DOWN" %} <label class="btn btn-outline-danger" for="instance_{{ instance.id }}">{{ instance.instance_name }}</label> {% endif %}
+        {% endfor %}
+        <br><br>
+        <label><b>Select Offering:</b></label>
+        <br>
+        {% for offering in offerings %}
+            <!-- If offering is found in session, then select that instance by default -->
+            {% if offering.offering_type_name == request.session.offering_type_name and offering.group_name == request.session.group_name %}
+            <input class="btn-check" type="radio" name="offering_type" id="offering_{{ forloop.counter }}" value="{{ offering.offering_type_name }}-{{ offering.group_name }}" onchange="populateRateTypes(this)" checked>
+            {% else %}
+            <input class="btn-check" type="radio" name="offering_type" id="offering_{{ forloop.counter }}" value="{{ offering.offering_type_name }}-{{ offering.group_name }}" onchange="populateRateTypes(this)">
+            {% endif %}
+
+            <!-- Do not show group name if the group name is DEFAULT -->
+            {% if offering.group_name == "DEFAULT" %}
+                <label class="btn btn-outline-primary" for="offering_{{ forloop.counter }}">{{ offering.offering_type_name }}</label>
+            {% else %}
+                <label class="btn btn-outline-primary" for="offering_{{ forloop.counter }}">{{ offering.offering_type_name }} - {{ offering.group_name }}</label>
+            {% endif %}
+        {% endfor %}
+        <br><br>
+        <label><b>Select Rate Type:</b></label>
+        <div id="rate_type_div" style="overflow-y:auto;">
+            <!-- Following elemens are dummy elemnts to keep the div height fixed, it will be replaced from the AJAX call -->
+            <input class="btn-check" type="radio" id="dummy" value="">
+            <label class="btn btn-outline-primary" for="dummy" style="visibility: hidden">&nbsp;</label>
+        </div>
+        <br>
+        <label><b>Reuse Previously Generated Template:</b></label>
+        <select name="template_batch" id="template_batch" class="form-select">
+            <option hidden disabled selected value> ---- </option>
+            {% for batch in batches %}
+            <option value="{{ batch.id }}">{{ batch.batch_name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="hidden" name="action" id="action">
+        <button type="button" name="CreateTemplate" class="btn btn-primary" style="width: auto" onclick="submit_form(this)">Download Template</button>
+        &nbsp;
+        <button type="button" name="UploadTemplate" class="btn btn-primary" style="width: auto" onclick="submit_form(this)">Upload Rate</button>
+        &nbsp;
+        <button type="reset" class="btn btn-secondary" style="width: 20%;float: right;">Reset</button>
+        <br/><br/>
+    </form>
+    {% if request.session.allow_admin_rate_upload == "Y" %}
+        <p><a href="{% url 'home' %}">Return to Dashboard</a></p>
+    {% endif %}
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // When offering will be selected from session, corresponding rate types have to be populated
+        invokePopulateRateType();
+    });
+
+    function submit_form(button) {
+        if (button.name === "CreateTemplate") {
+            // Check if OTM instance has been selected
+            let atleastOneChecked = false;
+            document.getElementsByName("instance_id").forEach(element => {
+                if (element.checked){
+                    atleastOneChecked = true;
+                }                    
+            })          
+            if (atleastOneChecked === false) {
+                alert("Select OTM Instance.");
+                return false;
+            }
+            // Check if a template has been selected
+            if (document.getElementById("template_batch").value === "") {
+                // Check if offering type has been selected
+                atleastOneChecked = false;
+                document.getElementsByName("offering_type").forEach(element => {
+                    if (element.checked){
+                        atleastOneChecked = true;
+                    }                    
+                })          
+                if (atleastOneChecked === false) {
+                    alert("Select Offering Type.");
+                    return false;
+                }
+                // Check if rate type has been selected
+                atleastOneChecked = false;
+                document.getElementsByName("rate_type").forEach(element => {
+                    if (element.checked){
+                        atleastOneChecked = true;
+                    }                    
+                })          
+                if (atleastOneChecked === false) {
+                    alert("Select Rate Type.");
+                    return false;
+                }
+            }
+        }
+        else {
+            // Check if OTM instance has been selected
+            let atleastOneChecked = false;
+            document.getElementsByName("instance_id").forEach(element => {
+                if (element.checked){
+                    atleastOneChecked = true;
+                }                    
+            })          
+            if (atleastOneChecked === false) {
+                alert("Select OTM Instance.");
+                return false;
+            }
+            // Check if offering type has been selected
+            atleastOneChecked = false;
+            document.getElementsByName("offering_type").forEach(element => {
+                if (element.checked){
+                    atleastOneChecked = true;
+                }                    
+            })          
+            if (atleastOneChecked === false) {
+                alert("Select Offering Type.");
+                return false;
+            }
+            // Check if rate type has been selected
+            atleastOneChecked = false;
+            document.getElementsByName("rate_type").forEach(element => {
+                if (element.checked){
+                    atleastOneChecked = true;
+                }                    
+            })          
+            if (atleastOneChecked === false) {
+                alert("Select Rate Type.");
+                return false;
+            }
+        }
+        document.getElementById("action").value = button.name;
+        document.getElementById("main_form").submit();
+    }
+</script>
+
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ customer.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'change-password' request.session.customer_key%}">Change Password</a><br/><a href="{% url 'logout' request.session.customer_key%}">Logoff</a></p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "rate/common/base.html" %}
+{% load static %}
+{% block title %}Upload Rate File{% endblock %}
+
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+{% if result == "SUCCESS" %}
+    {% if input_file %}
+        <div class="alert alert-success" role="alert">CSV files have been created successfully from the uploaded <a href="{% get_media_prefix %}{{input_file}}">Excel</a>.</div>
+    {% endif %}
+    <form method="POST" action="{% url 'csv-uploaded' request.session.customer_key %}">
+        {% csrf_token %}
+        <table id="FileTable" class="table table-striped table-bordered">
+            <thead>
+                <tr><th style="text-align: center;">Sequence</th><th>File Name</th><th>Action <a href="{% get_media_prefix %}{{zip_file}}" title="Download all CSV files"><i class="bi bi-download"></i></a></th></tr>
+            </thead>
+            <tbody>
+                {% for file in generated_csv_files %}
+                    <tr><td style="text-align: center;">{{file.sequence}} <input type="hidden" name="csv_file_name[]" value="{{file.file_name}}"><input type="hidden" name="csv_file_id[]" value="{{file.file_id}}"></td><td>{{file.file_name}}</td><td><a href="{% get_media_prefix %}{{file.file_path}}">Download</a></td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br/>
+        <input type="submit" class="btn btn-primary" value="Upload CSVs to {{request.session.instance_name}}">
+        <br/><br/>
+        <div class="alert alert-warning" role="alert">Note: Rate files will be uploaded to <b>{{instance.instance_name}}</b> ({{ instance.otm_url }})</div>
+    </form>
+{% else %}
+    <div class="alert alert-danger" role="alert">{{csv_generate_message}}</div>
+{% endif %}
+<br/>
+{% if request.session.allow_admin_rate_upload == "Y" %}
+    <p><a href="{% url 'select-instance' request.session.customer_key%}">Go Back</a></p>
+{% else %}
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

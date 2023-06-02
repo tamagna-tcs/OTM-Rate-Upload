@@ -1,0 +1,45 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Edit Customer{% endblock %}
+
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+<form method="POST">
+    {% csrf_token %}
+    {% if error == True %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+    {% endif %}
+    <br/>
+    <label>Customer Name:</label>
+    <input type="text" name="customer_name" class="form-control" maxlength="50" value="{{customer.customer_name}}" required>
+    <label>Domain</label>
+    <input type="text" name="domain" class="form-control" maxlength="10" value="{{customer.domain}}" required>  
+    <label>End Date</label>
+    <input type="date" name="end_date" class="form-control" value="{{end_date}}">
+    <label>Give "User" Role to Admin</label>
+    <select name="allow_admin_rate_upload" class="form-select">
+        <option value="N" {% if customer.allow_admin_rate_upload == "N" %} selected {% endif %}>No</option>
+        <option value="Y" {% if customer.allow_admin_rate_upload == "Y" %} selected {% endif %}>Yes</option>
+    </select>
+    <label>All Users Can Access Saved Templates</label>
+    <select name="view_all_template_batches" class="form-select">
+        <option value="N" {% if customer.view_all_template_batches == "N" %} selected {% endif %}>No</option>
+        <option value="Y" {% if customer.view_all_template_batches == "Y" %} selected {% endif %}>Yes</option>
+    </select>
+    <br/>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<br/>
+
+<p><a href="{% url 'master-customers'%}">Return to Dashboard</a></p>
+</div>
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> 
+        OTM Rate Upload
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Manager Dashboard{% endblock %}
+  
+{% block content %}
+
+<div class="mx-auto col-lg-10 col-lg-6">
+    <!-- Conditionally display Manage Rate button -->
+    {% if request.session.allow_admin_rate_upload == "Y" %}
+        <div style="display: flex;justify-content: center;">
+        <a type="button" class="btn btn-success" href="{% url 'select-instance' request.session.customer_key%}">Manage Rate</a>
+        </div>
+        <br/>
+    {% endif %}
+    <form method="" action="{% url 'manager-profile-add' request.session.customer_key %}">
+        {% csrf_token %}
+        <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+            Users
+        </div>
+        <table class="table table-striped table-bordered">
+            <tr><th>User Name</th><th>User Type</th><th>Group</th><th nowrap="nowrap">Actions</th></tr>
+            {% for profile in profiles %}
+            <tr>
+                <td>{{ profile.user.username }}</td><td>{{ profile.user_type }}</td><td>{{ profile.group_name }}</td>
+                <td nowrap="nowrap">
+                    <a href="{% url 'manager-profile-update' request.session.customer_key profile.id %}">Edit</a>&nbsp;
+                    {% if profile.user.username != current_user_name %}<a href="{% url 'manager-profile-reset-password' request.session.customer_key profile.id %}">Reset Password</a> {% else %} &nbsp; {% endif %}
+                    {% if profile.user.username != current_user_name %}<a href="{% url 'manager-profile-delete' request.session.customer_key profile.id %}" onclick="return confirm('Are you sure to delete this user?');">Remove</a> {% else %} &nbsp; {% endif %}
+                </td>
+            </tr>   
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Create User</button>
+    </form>
+    <br/>
+    <form method="" action="{% url 'manager-instance-add' request.session.customer_key %}">
+        {% csrf_token %}
+        <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+            Instances
+        </div>
+        <table class="table table-striped table-bordered">
+            <tr><th>Instance Name</th><th>Type</th><th>URL</th><th>User Name</th><th nowrap="nowrap">Actions</th></tr>
+            {% for instance in instances %}
+            <tr>
+                <td>{{ instance.instance_name }}</td><td>{{ instance.instance_type }}</td><td nowrap="nowrap">{{ instance.otm_url }}</td><td>{{ instance.otm_user }}</td>
+                <td nowrap="nowrap">
+                    <a href="{% url 'manager-instance-update' request.session.customer_key instance.id %}">Edit</a>&nbsp;
+                    <a href="{% url 'manager-instance-delete' request.session.customer_key instance.id %}" onclick="return confirm('Are you sure to delete this instance?');">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Add New OTM Instance</button>
+    </form>
+    <br/>
+    <form method="" action="{% url 'manager-access-add' request.session.customer_key %}">
+        {% csrf_token %}
+        <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+            Access
+        </div>
+        <table class="table table-striped table-bordered">
+            <tr><th>User Name</th><th>Instance Name</th><th nowrap="nowrap">Actions</th></tr>
+            {% for access in accesses %}
+            <tr><td>{{ access.user.username }}</td><td>{{ access.instance.instance_name }}</td><td nowrap="nowrap"><a href="{% url 'manager-access-delete' request.session.customer_key access.id %}" onclick="return confirm('Are you sure to delete this template?');">Revoke Access</a></td></tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Grant Instance Access</button> 
+    </form>
+    <br>
+    <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+        Templates
+    </div>
+    <table class="table table-striped table-bordered">
+        <tr><th>Offering Type</th><th>Group</th><th>Rate Type</th>{% if request.user.is_staff %}<th nowrap="nowrap">Actions</th>{% endif %}</tr>
+        {% for template in templates %}
+        <tr><td>{{ template.offering_type_name }}</td><td>{{ template.group_name }}</td><td>{{ template.rate_type_name }}</td>{% if request.user.is_staff %}<td><a href="{% url 'master-template-delete' request.session.customer_key template.id %}" onclick="return confirm('Are you sure to delete this template?');">Delete</a></td>{% endif %}</tr>
+        {% endfor %}
+    </table>
+    <br/>
+    <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+        Saved Parameters
+    </div>
+    <table class="table table-striped table-bordered">
+        <tr><th>Parameter Set</th><th>Offering Type</th><th>Group</th><th>Rate Type</th><th>Creation Date</th><th>Created By</th><th>Action</th></tr>
+        {% for batch in batches %}
+        <tr><td>{{ batch.batch_name }}</td><td>{{ batch.template.offering_type_name }}</td><td>{{ batch.template.group_name }}</td><td>{{ batch.template.rate_type_name }}</td><td nowrap="nowrap">{{ batch.creation_date|date:"d-M-Y" }}</td><td>{{ batch.created_by }}</td><td nowrap="nowrap"><a href="{% url 'manager-batch-delete' request.session.customer_key batch.id %}" onclick="return confirm('Are you sure to delete this parameter?');">Delete</a></td></tr>
+        {% endfor %}
+    </table>
+    <br/><br/>
+    {% if request.user.is_staff %}
+        <p><a href="{% url 'home' %}">Return to Home</a></p>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    {% if request.user.is_staff %}
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+    {% else %}
+    <p><a href="{% url 'change-password' request.session.customer_key%}">Change Password</a><br/><a href="{% url 'logout' %}">Logoff</a></p>
+    {% endif %}
+{% endblock %}

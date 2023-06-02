@@ -1,0 +1,42 @@
+{% extends "rate/common/base.html" %}
+
+{% block title %}Upload Rate File{% endblock %}
+   
+{% block content %}
+<div class="mx-auto col-10 col-md-8 col-lg-6">
+    <BR/><BR/>
+    <form method="POST" name="FileUploadForm" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <input type="file" name="ratefile" class="form-control" accept=".xlsx,.xls" required autofocus>
+        <BR/>
+        <!-- <input type="hidden" name="passKeyEnabled" id="passKeyEnabled" class="form-control" value="{{ instance.passkey_enabled }}">
+        {% if instance.passkey_enabled == "Y" %}
+            <label>Enter Key</label>
+            <input type="password" id="passKey" name="passKey" class="form-control" required  maxlength="20">
+            <BR/>
+        {% endif %} -->
+        <input type="submit" class="btn btn-primary" value="Generate CSV">
+    </form>
+    <BR/>
+    {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
+    <BR/>
+    
+    {% if request.session.allow_admin_rate_upload == "Y" %}
+        <p><a href="{% url 'select-instance' request.session.customer_key%}">Go Back</a></p>
+    {% else %}
+        <p><a href="{% url 'home' %}">Return to home</a></p>
+    {% endif %}
+    {% endblock %}
+</div>
+
+{% block header %}
+    <p class="navbar-text">Signed in as {{ user.get_username }}</p>
+    <a class="navbar-brand"> {% if user.is_authenticated %}
+        {{ request.session.customer_name }}
+    {% else %}
+        OTM Rate Upload
+    {% endif %}</a>
+    <p><a href="{% url 'logout' %}">Logoff</a></p>
+{% endblock %}
