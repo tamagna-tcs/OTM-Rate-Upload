@@ -183,3 +183,9 @@ LOGGING = {
 }
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+FERNET_KEYS = []
+p = Path(__file__).with_name("fernet_key.txt")
+filename = p.absolute()
+with open(filename) as f:
+    FERNET_KEYS = [line.rstrip() for line in f]
