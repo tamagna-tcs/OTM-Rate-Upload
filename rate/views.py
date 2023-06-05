@@ -925,15 +925,16 @@ def upload_template(request, key):
                 error("upload_template - Error while converting input data to upper case " + str(e))
 
         # Drop rows if Charge Amount is missing
-        input_df.drop(input_df[(input_df["Charge Amount"] == "<NA>")].index, inplace=True)
+        if "Charge Amount" in input_df.columns.values.tolist():
+            input_df.drop(input_df[(input_df["Charge Amount"] == "<NA>")].index, inplace=True)
 
-        # Check if Charge Amount contains non-numeric values
-        for charge_amount in input_df["Charge Amount"]:
-            try:
-                float(charge_amount)                
-            except:
-                error("Charge Amount column contains non-numeric data")
-                return render(request, "rate/common/error_page.html", {"error_message" : "Charge Amount column contains non-numeric data - e.g., " + str(charge_amount)})
+            # Check if Charge Amount contains non-numeric values
+            for charge_amount in input_df["Charge Amount"]:
+                try:
+                    float(charge_amount)                
+                except:
+                    error("Charge Amount column contains non-numeric data")
+                    return render(request, "rate/common/error_page.html", {"error_message" : "Charge Amount column contains non-numeric data - e.g., " + str(charge_amount)})
         
         if "Start Date" in input_df.columns.values.tolist():
             # Check if Start Date contains date in correct format, if no show error, if yes update input_df with YYYYMMDD format
@@ -991,7 +992,8 @@ def upload_template(request, key):
         # Get the list of columns that should be checked for duplicates
         column_headers_for_duplicates = input_column_headers.copy()
         column_headers_for_duplicates.remove("index") # index column should not be considered while checking duplicates
-        column_headers_for_duplicates.remove("Charge Amount") # Charge Amount column should not be considered while checking duplicates
+        if "Charge Amount" in column_headers_for_duplicates:
+            column_headers_for_duplicates.remove("Charge Amount") # Charge Amount column should not be considered while checking duplicates
         if "Service Time Value" in column_headers_for_duplicates:
             column_headers_for_duplicates.remove("Service Time Value") # Service Time Value column should not be considered while checking duplicates
         if "Min Charge" in column_headers_for_duplicates:
@@ -1043,6 +1045,8 @@ def upload_template(request, key):
         
         # Get the timestamp from session, this will be appended to the CSV file name
         timestamp = request.session["timestamp"]
+        output_df_geo_cost = pd.DataFrame()
+
         # Loop over each CSV file
         for csv_file in csv_files: 
             info("--------Processing CSV " + csv_file.name + "--------")
@@ -1201,6 +1205,45 @@ def upload_template(request, key):
                 # Update the auto_number_initial_sequence field with the last used value
                 csv_file.auto_number_initial_sequence = initial_sequence + len(output_df) + 1
                 csv_file.save(update_fields=['auto_number_initial_sequence'])
+
+            # Store the output_df of RATE_GEO_COST as this would be needed during weight-break file creation
+            
+            if RATE_TYPE == "WEIGHT BREAK" and csv_file.name in ["RATE_GEO_COST"]:
+                output_df_geo_cost = output_df
+                # Populate weight break
+            if RATE_TYPE == "WEIGHT BREAK" and csv_file.name in ["RATE_GEO_COST_UNIT_BREAK"]:
+                # Get all the weight-break related column names from input Excel
+                wb_columns = [input_column_header for input_column_header in input_column_headers if input_column_header.startswith("weightBreak|")]
+                wb_min_costs = [input_column_header for input_column_header in input_column_headers if input_column_header.startswith("weightBreakMinCost|")]
+                wb_max_costs = [input_column_header for input_column_header in input_column_headers if input_column_header.startswith("weightBreakMaxCost|")]
+                if len(wb_columns) == 0:
+                    # If no weight-break columns are there in Excel, remove all rows from the dataframe so that the CSV file doesn't get created
+                    info("No Weight columns found in the Excel.")
+                    output_df.drop(output_df.index, inplace=True)
+                else:
+                    # Delete all rows from output_df
+                    output_df = output_df[0:0]
+                    for row_index, row in output_df_geo_cost.iterrows():
+                        rate_geo_cost_group_gid = str(row["RATE_GEO_COST_GROUP_GID"])
+                        rate_geo_cost_seq = str(row["RATE_GEO_COST_SEQ"])
+                        # Iterate over weight-break columns
+                        for wb_column_index, wb_column in enumerate(wb_columns):
+                            temp_df = pd.DataFrame(columns=output_column_headers, index=[0])
+                            temp_df["RATE_GEO_COST_GROUP_GID"] = rate_geo_cost_group_gid
+                            temp_df["RATE_GEO_COST_SEQ"] = rate_geo_cost_seq
+                            temp_df["RATE_UNIT_BREAK_GID"] = wb_column.lstrip("weightBreak|")
+                            temp_df["CHARGE_AMOUNT"] = input_df.loc[row_index, wb_column]   
+                            temp_df["CHARGE_AMOUNT_GID"] = input_df.loc[row_index, "Currency"]
+                            temp_df["MIN_COST"] = input_df.loc[row_index, wb_min_costs[wb_column_index]]   
+                            temp_df["MIN_COST_CURRENCY_GID"] = input_df.loc[row_index, "Currency"]
+                            temp_df["MAX_COST"] = input_df.loc[row_index, wb_max_costs[wb_column_index]]
+                            temp_df["MAX_COST_CURRENCY_GID"] = input_df.loc[row_index, "Currency"]
+                            temp_df["MAX_COST_CURRENCY_GID"] = input_df.loc[row_index, "Currency"]
+                            temp_df["DOMAIN_NAME"] = DOMAIN
+                            print("temp_df")
+                            print(temp_df)
+                            output_df = pd.concat([output_df, temp_df], ignore_index = True)
+                        output_df.reset_index()
 
             # If the file name already include .csv, then remove it and then append .csv along with timestamp
             csv_file_name = re.sub('.csv$', '', csv_file.csv_file_name, flags=re.IGNORECASE) + "_" + timestamp + ".csv"
